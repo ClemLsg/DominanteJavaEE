@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
+import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -22,19 +23,20 @@ import javax.jms.MessageListener;
 })
 public class MessageProcessor implements MessageListener {
     
+    @Inject //paquetage javax.inject
+    private MessageDispatcher dispatcher;
+    
     public MessageProcessor() {
     }
     
     @Override
     public void onMessage(Message message) {
-                try {
+        try {
             //on extrait le paiment du corps du message. - getBody est une méthode JMS 2.0
-            String paymentMessage = message.getBody(String.class);
-            for(int i = 0; i<=40;i++){
-                System.out.println("[traitement long d'integration dans le processus bancaire de]");
-                System.out.println(paymentMessage);
-            }
-            System.out.println("l'ordre de paiement "+paymentMessage+" va être retiré de la queue");
+            String fileMessage = message.getBody(String.class);
+            
+            dispatcher.dispatch("verify",fileMessage);
+            
         } catch (JMSException ex) {
             Logger.getLogger(MessageProcessor.class.getName()).log(Level.SEVERE, null, ex);
         }

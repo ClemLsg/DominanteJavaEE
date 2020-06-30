@@ -1,3 +1,4 @@
-com\cesi\dominantereception\facade\DominanteReception.class
+com\cesi\dominantereception\facade\DominanteServiceBean.class
 com\cesi\dominantereception\facade\JAXRSConfiguration.class
 com\cesi\dominantereception\facade\resources\JavaEE8Resource.class
+com\cesi\dominantereception\facade\DominanteServiceEndpointInterface.class
