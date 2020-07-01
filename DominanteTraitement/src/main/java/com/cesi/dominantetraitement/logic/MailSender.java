@@ -56,8 +56,11 @@ public class MailSender {
                     + "le fichier est le suivant : "
                     + data[2]
                     + "\n"
-                    + "Avec la clé suivante :"
+                    + "taux  de  confiance  du  document : "
                     + data[4]
+                    + "\n"
+                    + "Avec la clé suivante :"
+                    + data[3]
                     + "\n"
                     + "Le secret est :"
                     + data[5]);
