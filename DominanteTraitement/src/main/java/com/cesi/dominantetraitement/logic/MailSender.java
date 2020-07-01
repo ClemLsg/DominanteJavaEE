@@ -36,8 +36,8 @@ public class MailSender {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
         
-        String myAccountEmail = "thedarkdady@gmail.com";
-        String myAccountPassword = "gzmorgobebvokbyu";
+        String myAccountEmail = "xxxxx@gmail.com";
+        String myAccountPassword = "xxxxxxx";
 
         
         Session session = Session.getInstance(props, new Authenticator(){
@@ -49,7 +49,7 @@ public class MailSender {
         try {
             MimeMessage msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress("decryptor@javadominante.com"));
-            msg.setRecipient(Message.RecipientType.TO, new InternetAddress("clement.lesage@viacesi.fr"));
+            msg.setRecipient(Message.RecipientType.TO, new InternetAddress("xxxx@xxxx"));
             msg.setSubject("Fichier déchiffré avec succes !");
             msg.setSentDate(new Date());
             msg.setText("Le secret a été trouvé !\n"
