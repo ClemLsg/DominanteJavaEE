@@ -7,6 +7,7 @@ package com.cesi.dominantetraitement.logic;
 
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.inject.Inject;
 
 /**
  *
@@ -15,11 +16,22 @@ import javax.ejb.LocalBean;
 @Stateless
 @LocalBean
 public class MessageDispatcher {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     
-    public void dispatch(String methodeName, String data){
-        
+    @Inject //paquetage javax.inject
+    private FileVerification verificator;
+    
+    @Inject //paquetage javax.inject
+    private WCFMessenger wcfMessenger;
+    
+    public void dispatch(String methodName, String[] data){
+        switch(methodName){
+            case "verify":
+                verificator.verifyFile(data);
+                break;
+            
+            case "sendResults":
+                wcfMessenger.sendMessage(data);
+                break;
+        }
     }
 }

@@ -33,9 +33,13 @@ public class MessageProcessor implements MessageListener {
     public void onMessage(Message message) {
         try {
             //on extrait le paiment du corps du message. - getBody est une méthode JMS 2.0
-            String fileMessage = message.getBody(String.class);
+            String decryptFile = message.getBody(String.class);
+            String originalFile = message.getStringProperty("originalFile");
+            String filename = message.getStringProperty("filename");
             
-            dispatcher.dispatch("verify",fileMessage);
+            String[] data = {decryptFile, originalFile, filename};
+            
+            dispatcher.dispatch("verify", data);
             
         } catch (JMSException ex) {
             Logger.getLogger(MessageProcessor.class.getName()).log(Level.SEVERE, null, ex);
