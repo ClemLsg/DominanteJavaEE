@@ -15,5 +15,6 @@ Any value defined here will override the pom.xml file value but is only applicab
 -->
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.7</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>pfv5ee8</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f__2e_wsdl>http://localhost:8733/Design_Time_Addresses/WcfServiceLibrary/Service1/?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f__2e_wsdl>
     </properties>
 </project-shared-configuration>

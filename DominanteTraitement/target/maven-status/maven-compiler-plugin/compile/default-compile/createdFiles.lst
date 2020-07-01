@@ -1,2 +1,7 @@
-com\cesi\dominantetraitement\logic\NewSessionBean.class
+com\cesi\dominantetraitement\logic\MessageDispatcher.class
+com\cesi\dominantetraitement\logic\FileVerification.class
 com\cesi\dominantetraitement\logic\MessageProcessor.class
+com\cesi\dominantetraitement\logic\Dictionnary.class
+com\cesi\dominantetraitement\logic\Dictionnary_.class
+com\cesi\dominantetraitement\logic\NewSessionBean.class
+com\cesi\dominantetraitement\logic\WCFMessenger.class
