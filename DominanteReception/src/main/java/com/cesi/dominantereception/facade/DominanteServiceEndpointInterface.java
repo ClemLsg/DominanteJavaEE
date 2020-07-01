@@ -19,5 +19,5 @@ public interface DominanteServiceEndpointInterface {
     
     @WebMethod(operationName = "sendMessageToJMS")
     @WebResult(name = "sentMessage")
-    void SendMessageToJMS(@WebParam(name="decryptFile") String decryptFile,@WebParam(name="originalFile") String originalFile, @WebParam(name="filename") String filename);
+    void SendMessageToJMS(@WebParam(name="decryptFile") String decryptFile,@WebParam(name="originalFile") String originalFile, @WebParam(name="filename") String filename, @WebParam(name="key") String key);
 }

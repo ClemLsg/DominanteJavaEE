@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.inject.Inject;
@@ -43,18 +45,16 @@ public class FileVerification {
         
         String percent = getPercentage(data);
         String secret = findSecret(data);
+        if (Float.parseFloat(percent) >= 25 && secret != null){
+            String[] finalData = {data[0], data[1], data[2], data[3], percent, secret, "true"};
+            dispatcher.dispatch("sendMail", finalData);
+            dispatcher.dispatch("sendResults", finalData);
+        } else {
+            String[] finalData = {data[0], data[1], data[2], data[3], percent, secret, "false"};
+            dispatcher.dispatch("sendResults", finalData);
+        }
         
-        String[] finalData = {data[0], data[1], data[2], percent, secret};
-        
-        dispatcher.dispatch("sendResults", finalData);
     }
-    
-    static String readFile(String path, Charset encoding) 
-        throws IOException 
-      {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
-      }
     
     public String getPercentage(String[] data){
         
@@ -106,7 +106,11 @@ public class FileVerification {
     }
     
     public String findSecret(String[] data){
-        
-        return "test";
+        String[] strArr = data[0].split("information secrète");
+        if(strArr.length > 1) {
+            strArr = strArr[1].trim().split(" ");
+            return strArr[0];
+        }
+        return null;   
     }
 }

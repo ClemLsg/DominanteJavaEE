@@ -35,11 +35,13 @@ public class DominanteServiceBean implements DominanteServiceEndpointInterface {
     private Queue messageQueue; //paquetage javax.jms
      
     @Override
-    public void SendMessageToJMS(String decryptFile, String originalFile, String filename){
+    public void SendMessageToJMS(String decryptFile, String originalFile, String filename, String key){
         TextMessage msg = context.createTextMessage(decryptFile);
         try {
             msg.setStringProperty("originalFile", originalFile);
             msg.setStringProperty("filename", filename);
+            msg.setStringProperty("code", key);
+
         } catch (JMSException ex) {
             Logger.getLogger(DominanteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
         }

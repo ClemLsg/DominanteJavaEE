@@ -23,6 +23,9 @@ public class MessageDispatcher {
     @Inject //paquetage javax.inject
     private WCFMessenger wcfMessenger;
     
+    @Inject //paquetage javax.inject
+    private MailSender mailSender;
+    
     public void dispatch(String methodName, String[] data){
         switch(methodName){
             case "verify":
@@ -31,6 +34,10 @@ public class MessageDispatcher {
             
             case "sendResults":
                 wcfMessenger.sendMessage(data);
+                break;
+                
+            case "sendMail":
+                mailSender.sendMail(data);
                 break;
         }
     }

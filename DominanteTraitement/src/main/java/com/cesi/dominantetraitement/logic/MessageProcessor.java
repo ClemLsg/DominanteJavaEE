@@ -35,8 +35,10 @@ public class MessageProcessor implements MessageListener {
             String decryptFile = message.getBody(String.class);
             String originalFile = message.getStringProperty("originalFile");
             String filename = message.getStringProperty("filename");
+            String code = message.getStringProperty("code");
+
             
-            String[] data = {decryptFile, originalFile, filename};
+            String[] data = {decryptFile, originalFile, filename, code};
             
             dispatcher.dispatch("verify", data);
             

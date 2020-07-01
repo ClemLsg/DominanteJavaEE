@@ -46,6 +46,7 @@ public class WCFMessenger {
         array.getAnyType().add(data[2]);
         array.getAnyType().add(data[3]);
         array.getAnyType().add(data[4]);
+        array.getAnyType().add(data[5]);
         JAXBElement<ArrayOfanyType> dataToSend = objectFactory.createMSGData(array);
         
         msg.setTokenApp(tokenApp);
